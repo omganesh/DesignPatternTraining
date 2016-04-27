@@ -14,7 +14,7 @@ class SingleTone {
 	}
 	
 	private static class SingleToneHelper {
-		public static final SingleTone INSTANCE = new SingleTone();
+		 static final SingleTone INSTANCE = new SingleTone();
 	}
 	
 	public static SingleTone getInstance(int nuum){

@@ -7,6 +7,8 @@ abstract class Emp
  	int salary;
  	String desig;
 
+ 	List<Employee> subbordinates = new ArrayList<Employee>();
+
  	public Emp()
  	{
  		Scanner sc = new Scanner(System.in);
@@ -47,6 +49,11 @@ abstract class Emp
  		}
  		return null;
  	}
+
+
+ 	public void addSubbordinates(Emp employee){
+ 		subbordinates.addSubbordinates(employee);
+ 	} 	
 }
 
 class Programmer extends Emp{
@@ -104,4 +111,13 @@ class CEO extends Emp {
 
  	}
 }
+
+
+class pManager extends Manager {
+	private subbordinateProgrammers ;
+
+}
+
+class cManager extends Manager{
+	
 }

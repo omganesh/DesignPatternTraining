@@ -11,9 +11,9 @@ abstract class Emp implements Cloneable
  	int salary;
  	String desig;
 
- 	static Emp clerk=null;
-	static Emp programmer=null;
-	static Emp manager=null;
+ 	private static Emp clerk=null;
+	private static Emp programmer=null;
+	private static Emp manager=null;
 
  	public Emp()
  	{

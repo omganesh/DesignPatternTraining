@@ -1,75 +1,107 @@
-/**
- Class example containing Abstract factory with a single ton instance.
-**/
-
 import java.util.*;
 
-public class EmpMain{
-	public static void main(String args[]){
-		Scanner sc = new Scanner(System.in);
+abstract class Emp
+{
+ 	String name;
+ 	int age;
+ 	int salary;
+ 	String desig;
 
-		int ch1=0, ch2=0;
+ 	public Emp()
+ 	{
+ 		Scanner sc = new Scanner(System.in);
+ 		System.out.print(" Enter name : ");
+ 		name= sc.next();
 
-		ArrayList<Emp> emp = new ArrayList<Emp>();
+ 		System.out.print("Enter age: ");
+ 		age=sc.nextInt();
+ 	}
 
-		do {
-			Scanner sc1 = new Scanner(System.in);
-			System.out.println("--------------");
-			System.out.println("1. Create");
-			System.out.println("2.	Display");
-			System.out.println("3. Raise Salary");
-			System.out.println("4.	Exit ");
-			System.out.println("--------------");
-			System.out.print("Enter choice:-");
-			ch1=sc1.nextInt();
+ 	public void display(){
 
-			if(ch1==1){
-				do{
-					Scanner sc2= new Scanner(System.in);
-					System.out.println("*************");
-					System.out.println("1. Clerk");
-					System.out.println("2. Programmer");
-					System.out.println("3. Manager");
-					System.out.println("5. CEO");
-					System.out.println("4. Exit ");
-					System.out.println("*************");
-					System.out.print("Enter choice:-");
-					ch2=sc2.nextInt();
-					switch(ch2){
-						case 1: emp.add(Emp.createEmployee("Clerk"));
-						break;
-						case 2: emp.add(Emp.createEmployee("Programmer"));
-						break;
-						case 3: emp.add(Emp.createEmployee("Manager"));
-						break;
-						case 5: Emp ceo = Emp.createEmployee("CEO");
-								if (!emp.contains(ceo)){
-									emp.add(ceo);
-								}else{
-									System.out.println(" CEO is already present ");
-								}
-						break;
-					}
-				}while(ch2!=4);
-			}
+ 		System.out.println("Name : "+name);
+ 		System.out.println("Age :"+age);
+ 		System.out.println("Salary: "+salary);
+ 		System.out.println("Designation : "+ desig);
+ 		System.out.println();
+ 	}
 
-			if(ch1==2){
-				Iterator<Emp> i1= emp.iterator();
-				while(i1.hasNext()){
-					i1.next().display();
-				}
+ 	public abstract void raiseSalary();
 
-			}
+ 	public static Emp createEmployee(String employee){
 
-			if(ch1==3){
-				Iterator<Emp> i1= emp.iterator();
-				while(i1.hasNext()){
-					i1.next().raiseSalary();
-				}
+ 		if("Clerk".equals(employee)){
+ 			return new Clerk();	
+ 		}
 
-			}
+ 		if("Programmer".equals(employee)){
+ 			return new Programmer();	
+ 		}
 
-		}while(ch1!=4);
+ 		if("Manager".equals(employee)){
+ 			return new Manager();	
+ 		}
+
+ 		if("CEO".equals(employee)){
+ 			return CEO.getInstance();
+ 		}
+ 		return null;
+ 	}
+}
+
+class Programmer extends Emp{
+	public Programmer(){
+		salary=25000;
+		desig="Programmer";
+	}
+
+	public void raiseSalary(){
+		salary+=5000;
+	}
+}
+
+
+class Manager extends Emp{
+	public Manager(){
+		salary=70000;
+		desig="Manager";
+	}
+
+	public void raiseSalary(){
+		salary+=10000;
+	}
+}
+
+class Clerk extends Emp{
+	public Clerk(){
+		salary=8000;
+		desig="Clerk";
+	}
+
+	public void raiseSalary(){
+		salary+=2000;
+	}
+
+class CEO extends Emp {
+	private static int count=0;
+	private static CEO ceo =null;
+	private CEO() {
+		salary=15000;
+		desig="CEO";
+		count++;
 
 	}
+
+	public void raiseSalary(){
+		salary+=20000;
+	} 
+
+ 	public static CEO getInstance(){
+ 		if(count==0){
+ 			ceo= new CEO();
+ 		}
+ 		return ceo;
+
+ 	}
+}
 }

@@ -1,3 +1,10 @@
+
+/**
+Assignment for Bridge pattern 
+  where class Company & Account classes are included within the 
+display method.
+
+**/
 import java.util.*;
 
 abstract class Emp
@@ -6,6 +13,8 @@ abstract class Emp
  	int age;
  	int salary;
  	String desig;
+ 	companyAccountBridge compDetails = new companyAccountBridge();
+
 
  	public Emp()
  	{
@@ -23,6 +32,8 @@ abstract class Emp
  		System.out.println("Age :"+age);
  		System.out.println("Salary: "+salary);
  		System.out.println("Designation : "+ desig);
+ 		compDetails.display(salary);
+
  		System.out.println();
  	}
 
@@ -104,4 +115,52 @@ class CEO extends Emp {
 
  	}
 }
+}
+
+
+class Company {
+	String companyName;
+	String companyAddress;
+
+	public Company(String name){
+		this.companyName=name;
+	}
+
+	public displayCompanyName() {
+		System.out.println(" Company Name: "+this.companyName);
+	}
+}
+
+class Account {
+
+	private final double ta_perc=0.1;
+	private final double da_perc=0.2;
+	private final double hra_perc=0.3;
+
+	public int getDa(int sal){
+		return (sal * da_perc);
+	}
+
+	public int getTa(int sal){
+		return (sal * ta_perc);
+	}
+
+	public int getHra(int sal){
+		return (sal * hra_perc);
+	}
+
+	public void display(int sal){
+		Sysetem.out.println("The salary break-up   \nHRA "+getTa(sal)+"\n DA ::"+getDa(sal)+"\n Ta ::"+getTa(sal));
+	}
+}
+
+
+class companyAccountBridge {
+	Company company;
+	Account account;
+
+	public void display(int sal){
+		company.display();
+		salary.display(sal);
+	}
 }

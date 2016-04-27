@@ -82,26 +82,25 @@ class Clerk extends Emp{
 		salary+=2000;
 	}
 
-class CEO extends Emp {
-	private static int count=0;
-	private static CEO ceo =null;
-	private CEO() {
-		salary=15000;
-		desig="CEO";
-		count++;
+	class CEO extends Emp {
+		private static int count=0;
+		private static CEO ceo =null;
+		private CEO() {
+			salary=15000;
+			desig="CEO";
+			count++;
 
+		}
+
+		public void raiseSalary(){
+			salary+=20000;
+		} 
+
+	 	public static CEO getInstance(){
+	 		if(count==0){
+	 			ceo= new CEO();
+	 		}
+	 		return ceo;
+	 	}
 	}
-
-	public void raiseSalary(){
-		salary+=20000;
-	} 
-
- 	public static CEO getInstance(){
- 		if(count==0){
- 			ceo= new CEO();
- 		}
- 		return ceo;
-
- 	}
-}
 }
