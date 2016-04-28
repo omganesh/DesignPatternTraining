@@ -1,6 +1,8 @@
 import java.util.*;
 /**
 Iterator example 
+
+Best way to get the iterator wa
 **/
 
 class Item {

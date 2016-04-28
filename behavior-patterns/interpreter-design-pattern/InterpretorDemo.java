@@ -7,6 +7,11 @@
 
  Usage:: java InterpretorDemo "15 to Hexadecimal"
 
+
+   In java :
+		Java Interpreter 
+		  Bytecode  -> to appropriate machine language
+
 **/
 class InterpreterContext{
 	public String getBinaryFormat(int i){
@@ -87,6 +92,5 @@ public class InterpretorDemo {
 		InterpreterClient ic = new InterpreterClient (new InterpreterContext());
 
 		System.out.println(args[0]+ ":"+ic.interpret(args[0]));
-
 	}
 }

@@ -3,6 +3,8 @@ import java.util.*;
 /**
 Example of Command pattern 
 	
+	Implementation example : Prepared statment 
+	
 **/
 
 
